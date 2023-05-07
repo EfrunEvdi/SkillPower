@@ -21,4 +21,22 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Dtos\BlogDtos\" />
+    <Folder Include="Dtos\ContactDtos\" />
+    <Folder Include="Dtos\CourseDtos\" />
+    <Folder Include="Dtos\HomeCommentDtos\" />
+    <Folder Include="Dtos\HomeHeaderDtos\" />
+    <Folder Include="Dtos\HomeProgramDtos\" />
+    <Folder Include="Dtos\HomeStepDtos\" />
+    <Folder Include="Dtos\ServicesAboutDtos\" />
+    <Folder Include="Dtos\ServicesFeaturedDtos\" />
+    <Folder Include="Dtos\ServicesHeaderDtos\" />
+    <Folder Include="Dtos\StatisticDtos\" />
+    <Folder Include="Dtos\SubscribeDtos\" />
+    <Folder Include="Dtos\TeacherDtos\" />
+    <Folder Include="Dtos\AppRoleDtos\" />
+    <Folder Include="Dtos\AboutHeaderDtos\" />
+  </ItemGroup>
+
 </Project>

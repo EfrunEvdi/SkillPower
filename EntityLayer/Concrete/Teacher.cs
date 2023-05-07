@@ -14,5 +14,8 @@ namespace EntityLayer.Concrete
         public string TeacherLink1 { get; set; }
         public string TeacherLink2 { get; set; }
         public bool TeacherStatus { get; set; }
+
+        public int AppUserID { get; set; }
+        public AppUser AppUser { get; set; }
     }
 }

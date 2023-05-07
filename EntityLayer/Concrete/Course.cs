@@ -13,5 +13,8 @@ namespace EntityLayer.Concrete
         public string CourseTime { get; set; }
         public int CourseAttendee { get; set; }
         public bool CourseStatus { get; set; }
+
+        public int AppUserID { get; set; }
+        public AppUser AppUser { get; set; }
     }
 }
