@@ -9,8 +9,7 @@ namespace EntityLayer.Concrete
 {
     public class AboutHeader
     {
-        [Key]
-        public int HeaderID { get; set; }
+        public int AboutHeaderID { get; set; }
         public string HeaderTitle { get; set; }
         public string HeaderDescription { get; set; }
         public bool HeaderStatus { get; set; }

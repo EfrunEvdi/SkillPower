@@ -9,8 +9,7 @@ namespace EntityLayer.Concrete
 {
     public class HomeComment
     {
-        [Key]
-        public int CommentID { get; set; }
+        public int HomeCommentID { get; set; }
         public string CommentNameSurname { get; set; }
         public string CommentComment { get; set; }
         public string CommentImageURL { get; set; }

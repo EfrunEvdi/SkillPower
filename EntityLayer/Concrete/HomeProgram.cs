@@ -9,8 +9,7 @@ namespace EntityLayer.Concrete
 {
     public class HomeProgram
     {
-        [Key]
-        public int ProgramID { get; set; }
+        public int HomeProgramID { get; set; }
         public string ProgramTitle { get; set; }
         public string ProgramDescription { get; set; }
         public string ProgramArticle1 { get; set; }

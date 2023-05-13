@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230507081725_first_migration")]
-    partial class first_migration
+    [Migration("20230513164831_firstmig")]
+    partial class firstmig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,11 +26,11 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.Concrete.AboutHeader", b =>
                 {
-                    b.Property<int>("HeaderID")
+                    b.Property<int>("AboutHeaderID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HeaderID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AboutHeaderID"), 1L, 1);
 
                     b.Property<string>("HeaderDescription")
                         .IsRequired()
@@ -43,7 +43,7 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("HeaderID");
+                    b.HasKey("AboutHeaderID");
 
                     b.ToTable("AboutHeaders");
                 });
@@ -335,11 +335,11 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.Concrete.HomeComment", b =>
                 {
-                    b.Property<int>("CommentID")
+                    b.Property<int>("HomeCommentID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CommentID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HomeCommentID"), 1L, 1);
 
                     b.Property<int>("AppUserID")
                         .HasColumnType("int");
@@ -359,7 +359,7 @@ namespace DataAccessLayer.Migrations
                     b.Property<bool>("CommentStatus")
                         .HasColumnType("bit");
 
-                    b.HasKey("CommentID");
+                    b.HasKey("HomeCommentID");
 
                     b.HasIndex("AppUserID");
 
@@ -368,11 +368,11 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.Concrete.HomeHeader", b =>
                 {
-                    b.Property<int>("HeaderID")
+                    b.Property<int>("HomeHeaderID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HeaderID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HomeHeaderID"), 1L, 1);
 
                     b.Property<string>("HeaderDescription")
                         .IsRequired()
@@ -385,18 +385,18 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("HeaderID");
+                    b.HasKey("HomeHeaderID");
 
                     b.ToTable("HomeHeaders");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.HomeProgram", b =>
                 {
-                    b.Property<int>("ProgramID")
+                    b.Property<int>("HomeProgramID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProgramID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HomeProgramID"), 1L, 1);
 
                     b.Property<string>("ProgramArticle1")
                         .IsRequired()
@@ -425,18 +425,18 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ProgramID");
+                    b.HasKey("HomeProgramID");
 
                     b.ToTable("HomePrograms");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.HomeStep", b =>
                 {
-                    b.Property<int>("StepID")
+                    b.Property<int>("HomeStepID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StepID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HomeStepID"), 1L, 1);
 
                     b.Property<string>("StepDescription")
                         .IsRequired()
@@ -449,18 +449,18 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("StepID");
+                    b.HasKey("HomeStepID");
 
                     b.ToTable("HomeSteps");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.ServicesAbout", b =>
                 {
-                    b.Property<int>("AboutID")
+                    b.Property<int>("ServicesAboutID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AboutID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ServicesAboutID"), 1L, 1);
 
                     b.Property<string>("AboutDescription")
                         .IsRequired()
@@ -474,18 +474,18 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("AboutID");
+                    b.HasKey("ServicesAboutID");
 
                     b.ToTable("ServicesAbouts");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.ServicesFeatured", b =>
                 {
-                    b.Property<int>("FeaturedID")
+                    b.Property<int>("ServicesFeaturedID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FeaturedID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ServicesFeaturedID"), 1L, 1);
 
                     b.Property<string>("FeaturedDescription")
                         .IsRequired()
@@ -499,18 +499,18 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("FeaturedID");
+                    b.HasKey("ServicesFeaturedID");
 
                     b.ToTable("ServicesFeatureds");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.ServicesHeader", b =>
                 {
-                    b.Property<int>("HeaderID")
+                    b.Property<int>("ServicesHeaderID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HeaderID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ServicesHeaderID"), 1L, 1);
 
                     b.Property<string>("HeaderArticle1")
                         .IsRequired()
@@ -539,7 +539,7 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("HeaderID");
+                    b.HasKey("ServicesHeaderID");
 
                     b.ToTable("ServicesHeaders");
                 });

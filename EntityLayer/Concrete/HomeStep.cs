@@ -9,8 +9,7 @@ namespace EntityLayer.Concrete
 {
     public class HomeStep
     {
-        [Key]
-        public int StepID { get; set; }
+        public int HomeStepID { get; set; }
         public string StepTitle { get; set; }
         public string StepDescription { get; set; }
         public bool StepStatus { get; set; }

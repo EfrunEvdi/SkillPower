@@ -9,8 +9,7 @@ namespace EntityLayer.Concrete
 {
     public class ServicesHeader
     {
-        [Key]
-        public int HeaderID { get; set; }
+        public int ServicesHeaderID { get; set; }
         public string HeaderTitle { get; set; }
         public string HeaderDescription { get; set; }
         public string HeaderArticle1 { get; set; }
