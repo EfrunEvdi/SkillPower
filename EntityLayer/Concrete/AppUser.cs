@@ -12,6 +12,7 @@ namespace EntityLayer.Concrete
         public string Name { get; set; }
         public string Surname { get; set; }
         public string ImageUrl { get; set; }
+        public int ConfirmCode { get; set; }
 
         public List<Blog> Blogs { get; set; }
         public List<Course> Courses { get; set; }

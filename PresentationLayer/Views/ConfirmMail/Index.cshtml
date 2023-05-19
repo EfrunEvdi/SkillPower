@@ -1,4 +1,4 @@
-﻿@model AppUserRegisterDto
+﻿@model ConfirmMailViewModel
 
 @{
     Layout = null;
@@ -106,8 +106,8 @@
             text-align: center;
         }
         /* ============================================================
-                                                                                                                                    RIGHT SIDEBAR SECTION
-                                                                                                                                    ============================================================ */
+                                                                                                                                                            RIGHT SIDEBAR SECTION
+                                                                                                                                                            ============================================================ */
 
         #right-sidebar {
             width: 90px;
@@ -126,8 +126,8 @@
 
 
         /* ============================================================
-                                                                                                                                    RIGHT SIDEBAR TOGGLE SECTION
-                                                                                                                                    ============================================================ */
+                                                                                                                                                            RIGHT SIDEBAR TOGGLE SECTION
+                                                                                                                                                            ============================================================ */
 
         .hide-right-bar-notifications {
             margin-right: -300px !important;
@@ -197,30 +197,15 @@
                     <h3>Kayıt Ol!</h3>
                     <h6>Öğrenmenin keyfini çıkar.</h6>
                     <form method="post" class="signin-form">
+
+                        <input type="hidden" class="form-control" value="@ViewBag.Mail" asp-for="Mail" />
+
                         <div class="form-input">
-                            <input type="text" asp-for="Name" placeholder="İsim" required="" autofocus>
-                        </div>
-                        <div class="form-input">
-                            <input type="text" asp-for="Surname" placeholder="Soyisim" required="">
-                        </div>
-                        <div class="form-input">
-                            <input type="text" asp-for="Username" placeholder="Kullanıcı Adı" required="">
-                        </div>
-                        <div class="form-input">
-                            <input type="email" asp-for="Email" placeholder="E-Posta Adresi" required="">
-                        </div>
-                        <div class="form-input">
-                            <input type="password" asp-for="Password" placeholder="Şifre" required="">
-                        </div>
-                        <div class="form-input">
-                            <input type="password" asp-for="ConfirmPassword" placeholder="Şifre Tekrar" required="">
+                            <input type="text" asp-for="ConfirmCode" placeholder="6 haneli kodu giriniz." required="" autofocus>
                         </div>
 
-                        <div asp-validation-summary="ModelOnly"></div>
-
-                        <button type="submit" class="btn btn-primary theme-button mt-4">Kayıt Ol!</button>
+                        <button type="submit" class="btn btn-primary theme-button mt-4">HESABI AKTİFLEŞTİR!</button>
                     </form>
-                    <p class="signup">Zaten bir hesabın var mı? <a href="///" class="signuplink">Giriş Yap!</a></p>
                 </div>
             </div>
         </div>
