@@ -1,4 +1,83 @@
-﻿@{
-    Layout = null;
+﻿@model AppUserEditDto
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
 }
+
+<div class="col-12">
+    <div class="dashboard_header mb_30">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="dashboard_header_title">
+                    <h3> Profilim</h3>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="dashboard_breadcam text-end">
+                    <p><a href="index.html">Dashboard</a> <i class="fas fa-caret-right"></i> Profilim</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12">
+    <div class="white_card card_height_100 mb_30">
+        <div class="white_card_header">
+            <div class="box_header m-0">
+                <div class="main-title">
+                    <h3 class="m-0">Profil Bilgilerim</h3>
+                </div>
+            </div>
+        </div>
+        <div class="white_card_body">
+            <div class="card-body">
+                <form>
+                    <div class="row mb-3 text-center">
+                        <div class="col-md-12">
+                            <div class="member_thumb">
+                                <img style="width:30%" src="@Model.ImageUrl" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label" for="inputEmail4">İsim</label>
+                            <input type="text" asp-for="Name" class="form-control" id="inputEmail4" placeholder="İsim">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="inputEmail4">Soyisim</label>
+                            <input type="text" asp-for="Surname" class="form-control" id="inputEmail4" placeholder="Soyisim">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="inputAddress">Email</label>
+                        <input type="email" asp-for="Email" class="form-control" id="inputAddress" placeholder="Email">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="inputAddress2">Telefon Numarası</label>
+                        <input type="text" asp-for="PhoneNumber" class="form-control" id="inputAddress2" placeholder="Telefon Numarası">
+                    </div>
+                    <div class="row mb-3">
+                        <div class=" col-md-6">
+                            <label class="form-label" for="inputCity">Şifre</label>
+                            <input type="password" asp-for="Password" class="form-control" id="inputCity">
+                        </div>
+                        <div class=" col-md-6">
+                            <label class="form-label" for="inputCity">Şifre Tekrarı</label>
+                            <input type="password" asp-for="Password" class="form-control" id="inputCity">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="inputProfile">Hakkımda</label>
+                        <textarea class="form-control" id="inputProfile" rows="5"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
