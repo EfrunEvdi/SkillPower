@@ -1,0 +1,63 @@
+﻿@model EntityLayer.Concrete.CourseDetail
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+<div class="col-lg-12">
+    <div class="white_card card_height_100 mb_30">
+        <div class="white_card_header">
+            <div class="box_header m-0">
+                <div class="main-title">
+                    <h3 class="m-0">Bootcamp İçerik Bilgileri Formu</h3>
+                </div>
+            </div>
+        </div>
+        <div class="white_card_body">
+            <p class="card-subtitle mb-1">
+                Sevgili Bootcamp Oluşturma Formu Katılımcısı,
+            </p>
+            <p class="card-subtitle mb-3">
+                Sizlere kurs oluşturma formumuza hoş geldiniz demek istiyorum! Lütfen aşağıda yer alan bilgileri doldururken eksiklik olmamasına özen gösterin. Amacımız, sizin için en iyi deneyimi sağlamak ve isteklerinizi en iyi şekilde karşılamaktır. Bu nedenle, aşağıdaki bilgileri bize sunarken dikkatli olmanızı rica ederiz.
+            </p>
+
+            <form method="post">
+                <div class="input-group mb-3">
+                    <div class="input-group-text">
+                        <span class="" id="basic-addon1">Kurs Adı : </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Kurs Adı" asp-for="CourseName" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-text">
+                        <span class="" id="basic-addon1">Kurs Linki : </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Kurs Adı" asp-for="CourseLink" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-text">
+                        <span class="" id="basic-addon1">Kurs Süre : </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Bootcamp Toplam Süre" asp-for="CourseTime" aria-describedby="basic-addon1">
+                    <div class="input-group-text">
+                        <span class="" id="basic-addon1">Dakika </span>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-text">
+                        <span class="" id="basic-addon1">Kurs Öğretmeni : </span>
+                    </div>
+                    @Html.DropDownListFor(x => x.TeacherID, (List<SelectListItem>)ViewBag.TV, "Öğretmen seçiniz.", new { @class = "form-control", @required = "required" })
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <button type="reset" class="btn btn-outline-primary">Vazgeç</button>
+                        <button id="send" type="submit" class="btn btn-outline-success">Kursu Ekle!</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

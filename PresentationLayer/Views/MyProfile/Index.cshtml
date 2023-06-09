@@ -33,7 +33,7 @@
         </div>
         <div class="white_card_body">
             <div class="card-body">
-                <form>
+                <form method="post">
                     <div class="row mb-3 text-center">
                         <div class="col-md-12">
                             <div class="member_thumb">
@@ -53,6 +53,10 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="inputAddress">Email</label>
+                        <input type="text" asp-for="UserName" class="form-control" id="inputAddress" placeholder="Email">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="inputAddress">Email</label>
                         <input type="email" asp-for="Email" class="form-control" id="inputAddress" placeholder="Email">
                     </div>
                     <div class="mb-3">
@@ -66,7 +70,7 @@
                         </div>
                         <div class=" col-md-6">
                             <label class="form-label" for="inputCity">Şifre Tekrarı</label>
-                            <input type="password" asp-for="Password" class="form-control" id="inputCity">
+                            <input type="password" asp-for="ConfirmPassword" class="form-control" id="inputCity">
                         </div>
                     </div>
 

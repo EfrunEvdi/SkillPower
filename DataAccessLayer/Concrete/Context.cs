@@ -20,6 +20,7 @@ namespace DataAccessLayer.Concrete
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Course> Courses { get; set; }
+        public DbSet<CourseDetail> CourseDetails { get; set; }
         public DbSet<HomeComment> HomeComments { get; set; }
         public DbSet<HomeHeader> HomeHeaders { get; set; }
         public DbSet<HomeProgram> HomePrograms { get; set; }

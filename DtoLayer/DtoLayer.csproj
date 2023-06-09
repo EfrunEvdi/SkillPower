@@ -24,7 +24,7 @@
   <ItemGroup>
     <Folder Include="Dtos\BlogDtos\" />
     <Folder Include="Dtos\ContactDtos\" />
-    <Folder Include="Dtos\CourseDtos\" />
+    <Folder Include="Dtos\CourseDetailDtos\" />
     <Folder Include="Dtos\HomeCommentDtos\" />
     <Folder Include="Dtos\HomeHeaderDtos\" />
     <Folder Include="Dtos\HomeProgramDtos\" />

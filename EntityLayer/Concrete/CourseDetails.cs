@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.Concrete
 {
-    public class Course
+    public class CourseDetail
     {
-        public int CourseID { get; set; }
+        public int CourseDetailID { get; set; }
         public string CourseName { get; set; }
-        public int CourseTotalTime { get; set; }
-        public int CourseAttendee { get; set; }
-        public int CourseLikes { get; set; }
-        public bool CourseStatus { get; set; }
+        public string CourseLink { get; set; }
+        public int CourseTime { get; set; }
+
+        public int TeacherID { get; set; }
+        public Teacher Teacher { get; set; }
 
         public int AppUserID { get; set; }
         public AppUser AppUser { get; set; }

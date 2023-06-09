@@ -48,6 +48,7 @@ namespace DataAccessLayer.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ConfirmCode = table.Column<int>(type: "int", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -369,8 +370,9 @@ namespace DataAccessLayer.Migrations
                     CourseID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CourseName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CourseTime = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CourseTotalTime = table.Column<int>(type: "int", nullable: false),
                     CourseAttendee = table.Column<int>(type: "int", nullable: false),
+                    CourseLikes = table.Column<int>(type: "int", nullable: false),
                     CourseStatus = table.Column<bool>(type: "bit", nullable: false),
                     AppUserID = table.Column<int>(type: "int", nullable: false)
                 },
@@ -432,6 +434,35 @@ namespace DataAccessLayer.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "CourseDetails",
+                columns: table => new
+                {
+                    CourseDetailID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CourseName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CourseLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CourseTime = table.Column<int>(type: "int", nullable: false),
+                    TeacherID = table.Column<int>(type: "int", nullable: false),
+                    AppUserID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CourseDetails", x => x.CourseDetailID);
+                    table.ForeignKey(
+                        name: "FK_CourseDetails_AspNetUsers_AppUserID",
+                        column: x => x.AppUserID,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+                    table.ForeignKey(
+                        name: "FK_CourseDetails_Teachers_TeacherID",
+                        column: x => x.TeacherID,
+                        principalTable: "Teachers",
+                        principalColumn: "TeacherID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -477,6 +508,16 @@ namespace DataAccessLayer.Migrations
                 column: "AppUserID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_CourseDetails_AppUserID",
+                table: "CourseDetails",
+                column: "AppUserID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CourseDetails_TeacherID",
+                table: "CourseDetails",
+                column: "TeacherID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Courses_AppUserID",
                 table: "Courses",
                 column: "AppUserID");
@@ -519,6 +560,9 @@ namespace DataAccessLayer.Migrations
                 name: "Contacts");
 
             migrationBuilder.DropTable(
+                name: "CourseDetails");
+
+            migrationBuilder.DropTable(
                 name: "Courses");
 
             migrationBuilder.DropTable(
@@ -549,10 +593,10 @@ namespace DataAccessLayer.Migrations
                 name: "Subscribes");
 
             migrationBuilder.DropTable(
-                name: "Teachers");
+                name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetRoles");
+                name: "Teachers");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

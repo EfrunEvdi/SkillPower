@@ -316,6 +316,9 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("CourseAttendee")
                         .HasColumnType("int");
 
+                    b.Property<int>("CourseLikes")
+                        .HasColumnType("int");
+
                     b.Property<string>("CourseName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -323,15 +326,48 @@ namespace DataAccessLayer.Migrations
                     b.Property<bool>("CourseStatus")
                         .HasColumnType("bit");
 
-                    b.Property<string>("CourseTime")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("CourseTotalTime")
+                        .HasColumnType("int");
 
                     b.HasKey("CourseID");
 
                     b.HasIndex("AppUserID");
 
                     b.ToTable("Courses");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.CourseDetail", b =>
+                {
+                    b.Property<int>("CourseDetailID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CourseDetailID"), 1L, 1);
+
+                    b.Property<int>("AppUserID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CourseLink")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CourseName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CourseTime")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TeacherID")
+                        .HasColumnType("int");
+
+                    b.HasKey("CourseDetailID");
+
+                    b.HasIndex("AppUserID");
+
+                    b.HasIndex("TeacherID");
+
+                    b.ToTable("CourseDetails");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.HomeComment", b =>
@@ -752,6 +788,25 @@ namespace DataAccessLayer.Migrations
                         .IsRequired();
 
                     b.Navigation("AppUser");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.CourseDetail", b =>
+                {
+                    b.HasOne("EntityLayer.Concrete.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EntityLayer.Concrete.Teacher", "Teacher")
+                        .WithMany()
+                        .HasForeignKey("TeacherID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Teacher");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.HomeComment", b =>

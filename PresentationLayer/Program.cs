@@ -1,4 +1,8 @@
+using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
+using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using PresentationLayer.Models;
 
@@ -8,6 +12,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<Context>();
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>();
+
+builder.Services.AddScoped<ICourseDal, EfCourseDal>();
+builder.Services.AddScoped<ICourseService, CourseManager>();
+
+builder.Services.AddScoped<ICourseDetailDal, EfCourseDetailDal>();
+builder.Services.AddScoped<ICourseDetailService, CourseDetailManager>();
+
+builder.Services.AddScoped<ITeacherDal, EfTeacherDal>();
+builder.Services.AddScoped<ITeacherService, TeacherManager>();
 
 var app = builder.Build();
 
@@ -30,6 +43,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Login}/{action=Index}/{id?}");
 
 app.Run();

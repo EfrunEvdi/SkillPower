@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityLayer.Concrete
+namespace DtoLayer.Dtos.CourseDtos
 {
-    public class Course
+    public class CreateCourseDto
     {
-        public int CourseID { get; set; }
         public string CourseName { get; set; }
         public int CourseTotalTime { get; set; }
         public int CourseAttendee { get; set; }
@@ -16,6 +15,5 @@ namespace EntityLayer.Concrete
         public bool CourseStatus { get; set; }
 
         public int AppUserID { get; set; }
-        public AppUser AppUser { get; set; }
     }
 }
