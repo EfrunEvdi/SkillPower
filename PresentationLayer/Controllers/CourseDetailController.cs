@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +13,8 @@ namespace PresentationLayer.Controllers
         private readonly ICourseDetailService _courseDetailService;
         private readonly ITeacherService _teacherService;
 
+        Context context = new Context();
+
         public CourseDetailController(UserManager<AppUser> userManager, ICourseDetailService courseDetailService, ITeacherService teacherService)
         {
             _userManager = userManager;
@@ -20,7 +23,7 @@ namespace PresentationLayer.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult CreateCourseDetails()
         {
             List<SelectListItem> TeacherValue = (from x in _teacherService.TGetList()
                                                  select new SelectListItem
@@ -35,12 +38,27 @@ namespace PresentationLayer.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(CourseDetail courseDetail)
+        public async Task<IActionResult> CreateCourseDetails(CourseDetail courseDetail)
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
             courseDetail.AppUserID = user.Id;
+            courseDetail.CourseID = Convert.ToInt32(TempData["CourseID"]);
             _courseDetailService.TInsert(courseDetail);
-            return RedirectToAction("asas");
+            return RedirectToAction("CreateCourseDetails", "CourseDetail");
+        }
+
+        public IActionResult CourseDetailList(int id, Course course)
+        {
+            var values = _courseDetailService.TGetListByCourseID(id);
+            ViewBag.ImageUrl = context.Courses.Where(x => x.CourseID == id).Select(y => y.CourseImageUrl).FirstOrDefault();
+            ViewBag.CourseName = context.Courses.Where(x => x.CourseID == id).Select(y => y.CourseName).FirstOrDefault();
+            ViewBag.Attende = context.Courses.Where(x => x.CourseID == id).Select(y => y.CourseAttendee).FirstOrDefault();
+            ViewBag.Like = context.Courses.Where(x => x.CourseID == id).Select(y => y.CourseLikes).FirstOrDefault();
+            ViewBag.Description = context.Courses.Where(x => x.CourseID == id).Select(y => y.CourseDescription).FirstOrDefault();
+
+            ViewBag.TotalPrice = context.CourseDetails.Where(x => x.CourseID == id).Select(y => y.CoursePrice).Sum();
+
+            return View(values);
         }
     }
 }

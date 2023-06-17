@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataAccessLayer.Migrations
 {
-    public partial class firstmig : Migration
+    public partial class mig_firstmig : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -443,6 +443,7 @@ namespace DataAccessLayer.Migrations
                     CourseName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CourseLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CourseTime = table.Column<int>(type: "int", nullable: false),
+                    CourseID = table.Column<int>(type: "int", nullable: false),
                     TeacherID = table.Column<int>(type: "int", nullable: false),
                     AppUserID = table.Column<int>(type: "int", nullable: false)
                 },
@@ -454,13 +455,19 @@ namespace DataAccessLayer.Migrations
                         column: x => x.AppUserID,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CourseDetails_Courses_CourseID",
+                        column: x => x.CourseID,
+                        principalTable: "Courses",
+                        principalColumn: "CourseID",
                         onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_CourseDetails_Teachers_TeacherID",
                         column: x => x.TeacherID,
                         principalTable: "Teachers",
                         principalColumn: "TeacherID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateIndex(
@@ -513,6 +520,11 @@ namespace DataAccessLayer.Migrations
                 column: "AppUserID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_CourseDetails_CourseID",
+                table: "CourseDetails",
+                column: "CourseID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_CourseDetails_TeacherID",
                 table: "CourseDetails",
                 column: "TeacherID");
@@ -563,9 +575,6 @@ namespace DataAccessLayer.Migrations
                 name: "CourseDetails");
 
             migrationBuilder.DropTable(
-                name: "Courses");
-
-            migrationBuilder.DropTable(
                 name: "HomeComments");
 
             migrationBuilder.DropTable(
@@ -594,6 +603,9 @@ namespace DataAccessLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Courses");
 
             migrationBuilder.DropTable(
                 name: "Teachers");

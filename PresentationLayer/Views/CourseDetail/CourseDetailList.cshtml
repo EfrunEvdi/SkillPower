@@ -1,0 +1,88 @@
+﻿@model List<CourseDetail>
+
+@{
+    ViewData["Title"] = "CourseDetailList";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+<div class="container-fluid p-0 ">
+    <div class="row">
+        <div class="col-12">
+            <div class="page_title_box d-flex align-items-center justify-content-between">
+                <div class="page_title_left">
+                    <h3 class="f_s_30 f_w_700 dark_text">Bootcamp Detayı</h3>
+                    <ol class="breadcrumb page_bradcam mb-0">
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Bootcamp Detayı</li>
+                    </ol>
+                </div>
+                <a href="#" class="white_btn3">Rapor Et!</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="white_card position-relative mb_20">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6 align-self-center"><img src="@ViewBag.ImageUrl" alt="" class="mx-auto d-block" height="300" /></div>
+
+                        <div class="col-lg-6 align-self-center">
+                            <div class="single-pro-detail">
+
+                                <p class="mb-1">.Net Bootcampi</p>
+                                <div class="custom-border mb-3"></div>
+                                <h3 class="pro-title">@ViewBag.CourseName</h3>
+                                <p class="text-muted mb-0">Bu bootcampe toplamda @ViewBag.Attende kişi katıldı.</p>
+                                <ul class="list-inline mb-2 product-review">
+                                    <li class="list-inline-item"><i class="fas fa-heart text-danger"></i></li>
+                                    <li class="list-inline-item">(@ViewBag.Like Beğeni)</li>
+                                </ul>
+                                <h2 class="pro-price">
+                                    @ViewBag.TotalPrice ₺ <span></span>@*<span class="text-danger fw-bold ms-2">50% Off</span>*@
+                                </h2>
+                                <h6 class="text-muted font_s_13 mt-2 mb-2">Bootcamp İçeriği :</h6>
+                                <ul class="list-unstyled pro-features border-0">
+                                    @foreach (var item in Model)
+                                    {
+                                        <li>@item.CourseName</li>
+                                    }
+                                </ul>
+                                <div class="quantity mt-3">
+                                    <a href="" class="btn theme_bg_6 text-white px-4 d-inline-block "><i class="fas fa-hand-paper me-2"></i>Kayıt Ol!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="white_card position-relative mb_20">
+                <div class="card-body">
+                    <h5 class="mt-0">@ViewBag.CourseName</h5>
+                    <p class="text-muted mb-3 font_s_14">@Html.Raw(ViewBag.Description)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            @foreach (var courseDetail in Model)
+            {
+                <div class="white_card position-relative mb_20">
+                    <div class="card-body">
+                        <div class="align-self-center"><img src="@courseDetail.CourseImageUrl" alt="" class="mx-auto d-block" height="300" /></div>
+                        <a href="@courseDetail.CourseLink" target="_blank"><h5 class="mt-0">@courseDetail.CourseName</h5></a>
+                        <p class="text-muted mb-3 font_s_14">@Html.Raw(courseDetail.CourseDescription)</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

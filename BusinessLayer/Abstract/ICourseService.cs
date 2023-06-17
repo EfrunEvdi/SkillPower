@@ -9,5 +9,6 @@ namespace BusinessLayer.Abstract
 {
     public interface ICourseService : IGenericService<Course>
     {
+        public List<Course> TGetCourseDetailsByCourseID();
     }
 }

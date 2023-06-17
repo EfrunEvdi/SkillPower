@@ -17,6 +17,5 @@ namespace EntityLayer.Concrete
         public List<Blog> Blogs { get; set; }
         public List<Course> Courses { get; set; }
         public List<HomeComment> HomeComments { get; set; }
-        public List<Teacher> Teachers { get; set; }
     }
 }

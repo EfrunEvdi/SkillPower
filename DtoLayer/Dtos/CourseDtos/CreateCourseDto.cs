@@ -9,6 +9,9 @@ namespace DtoLayer.Dtos.CourseDtos
     public class CreateCourseDto
     {
         public string CourseName { get; set; }
+        public string CourseImageUrl { get; set; }
+        public string CourseDescription { get; set; }
+        public int CourseTotalPrice { get; set; }
         public int CourseTotalTime { get; set; }
         public int CourseAttendee { get; set; }
         public int CourseLikes { get; set; }

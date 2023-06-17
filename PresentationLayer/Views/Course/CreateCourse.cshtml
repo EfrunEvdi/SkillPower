@@ -1,7 +1,7 @@
 ﻿@model DtoLayer.Dtos.CourseDtos.CreateCourseDto
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "CreateCourse";
     Layout = "~/Views/Shared/_CustomerLayout.cshtml";
 }
 
@@ -25,9 +25,24 @@
             <form method="post">
                 <div class="input-group mb-3">
                     <div class="input-group-text">
+                        <span class="" id="basic-addon1">Bootcamp Görseli : </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Bootcamp Görseli" asp-for="CourseImageUrl" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-text">
                         <span class="" id="basic-addon1">Bootcamp Adı : </span>
                     </div>
                     <input type="text" class="form-control" placeholder="Bootcamp Adı" asp-for="CourseName" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-text">
+                        <span class="" id="basic-addon1">Bootcamp Toplam Fiyat : </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Bootcamp Toplam Ücret" asp-for="CourseTotalPrice" aria-describedby="basic-addon1">
+                    <div class="input-group-text">
+                        <span class="" id="basic-addon1">₺ </span>
+                    </div>
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-text">
@@ -37,6 +52,12 @@
                     <div class="input-group-text">
                         <span class="" id="basic-addon1">Dakika </span>
                     </div>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-text">
+                        <span class="" id="basic-addon1">Bootcamp Açıklaması : </span>
+                    </div>
+                    <textarea type="text" class="form-control" placeholder="Bootcamp Açıklaması" asp-for="CourseDescription" aria-describedby="basic-addon1"></textarea>
                 </div>
                 <div class="form-group">
                     <div class="col-md-12">

@@ -18,18 +18,22 @@ namespace PresentationLayer.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult CreateCourse()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(CreateCourseDto createCourseDto)
+        public async Task<IActionResult> CreateCourse(CreateCourseDto createCourseDto)
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
             Course course = new Course()
             {
                 CourseName = createCourseDto.CourseName,
+                CourseImageUrl = createCourseDto.CourseImageUrl,
+                CourseDescription = createCourseDto.CourseDescription,
+                CourseTotalPrice = createCourseDto.CourseTotalPrice,
                 CourseTotalTime = createCourseDto.CourseTotalTime,
                 CourseAttendee = 0,
                 CourseLikes = 0,
@@ -37,10 +41,15 @@ namespace PresentationLayer.Controllers
                 AppUserID = user.Id
             };
 
-            TempData["ID"] = 1;
-
             _courseService.TInsert(course);
-            return RedirectToAction("Index", "CourseDetails");
+            TempData["CourseID"] = course.CourseID;
+            return RedirectToAction("CreateCourseDetails", "CourseDetail");
+        }
+
+        public IActionResult CourseList()
+        {
+            var values = _courseService.TGetCourseDetailsByCourseID();
+            return View(values);
         }
     }
 }

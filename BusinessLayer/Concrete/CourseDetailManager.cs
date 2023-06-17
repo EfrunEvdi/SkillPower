@@ -18,6 +18,11 @@ namespace BusinessLayer.Concrete
             _courseDetailDal = courseDetailDal;
         }
 
+        public List<CourseDetail> TGetListByCourseID(int id)
+        {
+            return _courseDetailDal.GetListByCourseID(id);
+        }
+
         public void TDelete(CourseDetail t)
         {
             _courseDetailDal.Delete(t);

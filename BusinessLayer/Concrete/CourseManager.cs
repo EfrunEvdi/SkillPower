@@ -28,6 +28,11 @@ namespace BusinessLayer.Concrete
             return _courseDal.GetByID(id);
         }
 
+        public List<Course> TGetCourseDetailsByCourseID()
+        {
+            return _courseDal.GetCourseDetailsByCourseID();
+        }
+
         public List<Course> TGetList()
         {
             return _courseDal.GetList();

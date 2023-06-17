@@ -4,6 +4,7 @@ using DataAccessLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20230616205358_mig_firstmig")]
+    partial class mig_firstmig
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -316,14 +318,6 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("CourseAttendee")
                         .HasColumnType("int");
 
-                    b.Property<string>("CourseDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CourseImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("CourseLikes")
                         .HasColumnType("int");
 
@@ -334,11 +328,8 @@ namespace DataAccessLayer.Migrations
                     b.Property<bool>("CourseStatus")
                         .HasColumnType("bit");
 
-                    b.Property<decimal>("CourseTotalPrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("CourseTotalTime")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("CourseTotalTime")
+                        .HasColumnType("int");
 
                     b.HasKey("CourseID");
 
@@ -358,16 +349,8 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("AppUserID")
                         .HasColumnType("int");
 
-                    b.Property<string>("CourseDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("CourseID")
                         .HasColumnType("int");
-
-                    b.Property<string>("CourseImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CourseLink")
                         .IsRequired()
@@ -377,11 +360,8 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("CoursePrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("CourseTime")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("CourseTime")
+                        .HasColumnType("int");
 
                     b.Property<int>("TeacherID")
                         .HasColumnType("int");
@@ -663,6 +643,9 @@ namespace DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TeacherID"), 1L, 1);
 
+                    b.Property<int>("AppUserID")
+                        .HasColumnType("int");
+
                     b.Property<string>("TeacherJob")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -683,6 +666,8 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("TeacherID");
+
+                    b.HasIndex("AppUserID");
 
                     b.ToTable("Teachers");
                 });
@@ -850,6 +835,17 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("AppUser");
                 });
 
+            modelBuilder.Entity("EntityLayer.Concrete.Teacher", b =>
+                {
+                    b.HasOne("EntityLayer.Concrete.AppUser", "AppUser")
+                        .WithMany("Teachers")
+                        .HasForeignKey("AppUserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.HasOne("EntityLayer.Concrete.AppRole", null)
@@ -908,6 +904,8 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Courses");
 
                     b.Navigation("HomeComments");
+
+                    b.Navigation("Teachers");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Course", b =>

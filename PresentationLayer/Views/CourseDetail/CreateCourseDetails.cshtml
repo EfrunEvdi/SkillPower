@@ -1,7 +1,7 @@
 ﻿@model EntityLayer.Concrete.CourseDetail
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "CreateCourseDetails";
     Layout = "~/Views/Shared/_CustomerLayout.cshtml";
 }
 
@@ -25,6 +25,12 @@
             <form method="post">
                 <div class="input-group mb-3">
                     <div class="input-group-text">
+                        <span class="" id="basic-addon1">Kurs Görseli : </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Kurs Görseli" asp-for="CourseImageUrl" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-text">
                         <span class="" id="basic-addon1">Kurs Adı : </span>
                     </div>
                     <input type="text" class="form-control" placeholder="Kurs Adı" asp-for="CourseName" aria-describedby="basic-addon1">
@@ -46,6 +52,21 @@
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-text">
+                        <span class="" id="basic-addon1">Bootcamp Toplam Fiyat : </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Bootcamp Toplam Ücret" asp-for="CoursePrice" aria-describedby="basic-addon1">
+                    <div class="input-group-text">
+                        <span class="" id="basic-addon1">₺ </span>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-text">
+                        <span class="" id="basic-addon1">Bootcamp Açıklaması : </span>
+                    </div>
+                    <textarea type="text" class="form-control" placeholder="Bootcamp Açıklaması" asp-for="CourseDescription" aria-describedby="basic-addon1"></textarea>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-text">
                         <span class="" id="basic-addon1">Kurs Öğretmeni : </span>
                     </div>
                     @Html.DropDownListFor(x => x.TeacherID, (List<SelectListItem>)ViewBag.TV, "Öğretmen seçiniz.", new { @class = "form-control", @required = "required" })
@@ -54,6 +75,7 @@
                     <div class="col-md-12">
                         <button type="reset" class="btn btn-outline-primary">Vazgeç</button>
                         <button id="send" type="submit" class="btn btn-outline-success">Kursu Ekle!</button>
+                        <a href="/MyProfile/Index" class="btn btn-outline-info">Tamam!</a>
                     </div>
                 </div>
             </form>

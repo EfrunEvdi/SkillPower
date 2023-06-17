@@ -1,7 +1,3 @@
-Öðretmen listesindeki AppUserID kaldýrýlacak. 
-Ders eklenirken hangi bootcampe baðlý olduðunu anlamak için tablolar baðlanacak.
-Kurs eklenirken tamam mý devam mý diye sorulacak buna göre iþlemler devam edecek.
-Hem bootcamp tablosuna hemde kurs tablolarýna resim kolonu eklenecek.
-Yine bu iki tablo için açýklama kolonlarý gelecek.
 Bootcamp totaltime hesaplattýrýlacak.
 Kurslarýn ücreti 2 tabloyada eklenecek ve bootcamp tablosunda hesaplattýrýlacak. ( Sanýrým traversalda vardý. )
+Course tablosuna kullanýlan diller eklenecek.
